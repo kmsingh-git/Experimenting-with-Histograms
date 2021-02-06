@@ -1,0 +1,122 @@
+---
+title: "Experimentin to see if varying bin sizes can distort interpretations"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+### 01/24/2021
+
+## Imports
+
+```{r}
+library(readr)
+library(tidyr)
+library(ggplot2)
+```
+
+## Read data
+
+```{r}
+fake_data <- read_csv("fake_data.csv")
+```
+
+## Data cleaning
+
+```{r}
+fake_data_long <- gather(fake_data, key = "category", value = "value")
+fake_data_long$category <- factor(fake_data_long$category, levels = c("A", "B"))
+print(fake_data_long)
+```
+
+## Graph test
+
+```{r}
+ggplot(fake_data_long, aes(x = value)) +
+  geom_histogram(
+    color = "black",
+    fill = "light blue",
+    breaks = seq(10,100,15)
+    ) +
+  facet_grid(. ~ category)
+
+# Useful arguments - breaks, limits, labels, trans, name
+# Useful functions - scale_x_continuous
+
+```
+
+Next - make functions that allow quick testing of different bin configurations
+
+### 01/30/2021
+
+Literally just pass in the vector that represent the bins. So function-ising is not hard.
+
+Let's try to find a way to create catch-all bins, one each at extreme left and extreme right
+
+```{r}
+bins_vector = c(
+  min(fake_data_long$value),
+  seq(10,100,15),
+  max(fake_data_long$value)
+)
+
+ggplot(fake_data_long, aes(x = value)) +
+  geom_histogram(
+    color = "black",
+    fill = "light blue",
+    breaks = bins_vector
+    ) +
+  facet_grid(. ~ category) +
+  scale_x_continuous(breaks = bins_vector)
+```
+
+Literally just put the max value as a bin ending :p (and same for min)
+
+Now let's function-ise the whole logic, with variables like data_file, bins_vector. Assume that the data_file has two columns and the first row contains header names.
+
+```{r}
+make_graph <- function(data_file, bins_vector) {
+  
+  fake_data <- read_csv("fake_data.csv")
+  fake_data_long <- gather(fake_data, key = "category", value = "value")
+  fake_data_long$category <- factor(
+    fake_data_long$category, levels = c("A", "B"))
+  
+  ggplot(fake_data_long, aes(x = value)) +
+    geom_histogram(
+      color = "black",
+      fill = "light blue",
+      breaks = bins_vector
+      ) +
+    facet_grid(. ~ category) +
+    scale_x_continuous(breaks = bins_vector)
+}
+```
+
+Test Function
+
+```{r}
+test_bins_vector = c(
+  min(fake_data_long$value),
+  seq(10,100,15),
+  max(fake_data_long$value)
+)
+
+make_graph("fake_data.csv", test_bins_vector)
+```
+
+Done.
+
+To do next:
+
+1. Create a simple webapp (static, maybe with D3) that allows you to input the path of the data_file, and the bins vector.
+
+2. Get to experimentin baby
+  - Explore different data generating processes for A and B
+  - Explore different bin vectors
+  
+  
