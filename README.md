@@ -6,3 +6,11 @@ I generate data using two different distributions, say A = N(40,10) and B = N(60
 
 ## Experiment 2:
 I generate data using the same distribution. Then try to use certain bins to make it seem like there is a 'significant' difference in the histograms of the 2 variables.
+
+### TODO 02/06/2021
+- Make a histogram faceted by variable, with bins as a variable
+- Make it using Dash components
+- Make an input field for user to specify bins
+- Connect input field with graph using Dash
+
+- Have fun with the experimentation
