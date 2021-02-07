@@ -2,10 +2,14 @@
 Try different bin sizes and limits to see if that alters inference of the same dataset
 
 ## Experiment 1:
-I generate data using two different distributions, say A = N(40,10) and B = N(60,10). Then try to use certain bins to hide the differences (in the trivial case just use one bin from min(data) to max(data), both histograms will have the same shape).
+Generate data using two different distributions, say A = N(40,10) and B = N(60,10). Then try to use certain bins to hide the differences (in the trivial case just use one bin from min(data) to max(data), both histograms will have the same shape).
+
+In this case, we would have demonstrated that even if the data comes from different data generating processes (or that variable A's measurements really are different from B's measurements like guy height vs girl height in a class), we can hide that using certain bin sizes.
 
 ## Experiment 2:
-I generate data using the same distribution. Then try to use certain bins to make it seem like there is a 'significant' difference in the histograms of the 2 variables.
+Generate data using the same distribution. Then try to use certain bins to make it seem like there is a 'significant' difference in the histograms of the 2 variables.
+
+In this case, we would have demonstrated that data from the same data generating process can be made to look different, by using certain bin sizes.
 
 ### TODO 02/06/2021
 - Make a histogram faceted by variable, with bins as a variable
