@@ -11,7 +11,7 @@ Generate data using the same distribution. Then try to use certain bins to make 
 
 In this case, we would have demonstrated that data from the same data generating process can be made to look different, by using certain bin sizes.
 
-### TODO 02/06/2021
+### TODO
 - ~~Make a histogram faceted by variable~~
 - Make bins as a variable
 - Make it using Dash components
