@@ -20,5 +20,7 @@ In this case, we would have demonstrated that data from the same data generating
 
 - Have fun with the experimentation
 
+- Share results in network (LinkedIn, Twitter) and maybe create a write-up for Medium
+
 ### Bonus features
 - Explore cumulative histograms
