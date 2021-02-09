@@ -13,7 +13,7 @@ In this case, we would have demonstrated that data from the same data generating
 
 ### TODO
 - ~~Make a histogram faceted by variable~~
-- Make bins as a variable
+- ~~Make bins as a variable~~
 - Make it using Dash components
 - Make an input field for user to specify bins
 - Connect input field with graph using Dash
