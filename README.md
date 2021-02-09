@@ -26,4 +26,4 @@ In this case, we would have demonstrated that data from the same data generating
 - Explore cumulative histograms
 
 ### Weird stuff
-- When creating Histogram using go.Bar instead of go.Histogram, getting slightly different results. Had to use go.Bar because go.Histogram doesn't allow bins of varying sizes I think -_- (here go refers to graph_objects in plotly)
+- When creating Histogram using `go.Bar` instead of `go.Histogram`, getting slightly different results. Had to use `go.Bar` because `go.Histogram` doesn't allow bins of varying sizes I think -_- (here `go` refers to `graph_objects` in `plotly`)
