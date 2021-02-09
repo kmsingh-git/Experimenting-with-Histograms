@@ -2,10 +2,16 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import pandas as pd
 
+def get_bins(lower_limit, upper_limit, step_size):
+    bins = list(range(lower_limit, upper_limit+1, step_size))
+    if (upper_limit - lower_limit) % step_size != 0:
+        bins.append(upper_limit)
+    return bins
+
 df = pd.read_csv("fake_data.csv", header=0)
-min_all = df.min().min()
-max_all = df.max().max()
-bins = list(range(min_all-1, max_all+2, 10))
+min_all, max_all = df.min().min(), df.max().max()
+
+bins = get_bins(min_all-1, max_all+1, 10)
 
 '''
 Whatever the outcome of the experiment, definitely good experience in trying different graphing options
@@ -31,7 +37,7 @@ fig.add_trace(
                 'width' : 1
             },
             'color' : '#EB89B5'
-        },
+        }
         # xbins=bins # This won't work since it needs a dict or XBins object, which forces us to use uniform binning by specifying start, end and size
     ),
     row=1, col=1
