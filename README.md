@@ -24,6 +24,13 @@ In this case, we would have demonstrated that data from the same data generating
 
 ### Bonus features
 - Explore cumulative histograms
+- Allow user to upload data, and even more bonus - allow them to persist some amount of data? Maybe have dynamic storage and allow them to pay for it? Just the cost of storage, I can potentially pay for the server?
+  - Other than this, there's no need for a server. I can just host a simple web page on Github that allows User to interact with it
+- Do different types of Histograms, and allow the user to toggle different options
+  - Stacked barchart/histogram
+  - Grouped barchart/histogram
+  - Marimekko chart
+  - Overlapped barchart/histogram (different colors for different traces)
 
 ### Weird stuff
-- When creating Histogram using `go.Bar` instead of `go.Histogram`, getting slightly different results. Had to use `go.Bar` because `go.Histogram` doesn't allow bins of varying sizes I think -_- (here `go` refers to `graph_objects` in `plotly`)
+- When creating Histogram using `go.Bar` instead of `go.Histogram`, getting slightly different results. Had to use `go.Bar` because `go.Histogram` doesn't allow bins of varying sizes I think -_- (here `go` refers to `graph_objects` in `plotly`) 
