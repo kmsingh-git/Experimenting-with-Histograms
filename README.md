@@ -15,10 +15,10 @@ In this case, we would have demonstrated that data from the same data generating
 - ~~Make a histogram faceted by variable~~
 - ~~Make bins as a variable~~
 - ~~Make it using Dash components~~
-  - Allow two modes, one of the type [1,34,67,100], the other specifies `start`, `end`, `stepsize` (which is easier to specify if you want uniform bins)
+  - ~~Allow two modes, one of the type [1,34,67,100], the other specifies `start`, `end`, `stepsize` (which is easier to specify if you want uniform bins)~~
 - ~~Make an input field for user to specify bins~~
 - ~~Connect input field with graph using Dash~~
-  - Make a Submit button instead and have that trigger the update graph callback
+  - ~~Make a Submit button instead and have that trigger the update graph callback~~
 - Make better ticks on x axes
 - Change hover data to show intervals instead of middle points
 

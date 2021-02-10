@@ -5,18 +5,10 @@ import dash_core_components as dcc
 ####### INITIAL ##########
 import pandas as pd
 
-def get_bins(lower_limit, upper_limit, step_size):
-    bins = list(range(lower_limit, upper_limit+1, step_size))
-    if (upper_limit - lower_limit) % step_size != 0:
-        bins.append(upper_limit)
-    return bins
-
 # Shouldn't have global data object in Dash apps in general
 # But 1) this won't be edited, and 2) later we migth let the user upload their data
 df = pd.read_csv("fake_data.csv", header=0)
-
 min_all, max_all = df.min().min(), df.max().max()
-bins = get_bins(min_all-1, max_all+1, 10)
 
 ##########################
 
@@ -31,11 +23,47 @@ layout = html.Div([
         # figure will get updated in first call to callback
     ),
     html.Div([
-        "Bins: ",
-        dcc.Input(
+        html.H5("Choose the desired Bins and click Submit"),
+        
+        "Start: ", dcc.Input(
+            id='start-bins',
+            value=min_all-1,
+            type='number'
+        ), html.Br(),
+
+        "End: ", dcc.Input(
+            id='end-bins',
+            value=max_all+1,
+            type='number'
+        ), html.Br(),
+
+        "Step size: ", dcc.Input(
+            id='step-size-bins',
+            value=10,
+            type='number'
+        ), 
+        
+        html.Button(
+            id='update-bins',
+            n_clicks=0,
+            children="Create Bins"
+        ),
+
+        html.P(),
+
+        "Bins: ", dcc.Input(
             id='bins',
-            value=str(bins),
-            type='text'
+            value='',
+            type='text',
+            style=dict(
+                width='550px'
+            )
+        ), html.P(),
+
+        html.Button(
+            id='submit-bins',
+            n_clicks=0,
+            children="Submit"
         )
     ])
 ])
