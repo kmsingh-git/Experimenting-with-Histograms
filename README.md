@@ -22,6 +22,10 @@ In this case, we would have demonstrated that data from the same data generating
 - ~~Deploy on Heroku~~
 - Make better ticks on x axes
 - Change hover data to show intervals instead of middle points
+- Update style
+  - Align input fields together
+  - Add personal signature in the app
+  - Maybe add links to Socials (IG, LinkedIn, Twitter, Github)
 
 - Have fun with the experimentation
 
@@ -36,7 +40,7 @@ In this case, we would have demonstrated that data from the same data generating
   - Grouped barchart/histogram
   - Marimekko chart
   - Overlapped barchart/histogram (different colors for different traces)
-  - Use separate virtual env for this project to maintain dependencies
+- Use separate virtual env for this project to maintain dependencies
 
 ### Weird stuff
 - When creating Histogram using `go.Bar` instead of `go.Histogram`, getting slightly different results. Had to use `go.Bar` because `go.Histogram` doesn't allow bins of varying sizes I think -_- (here `go` refers to `graph_objects` in `plotly`) 
