@@ -1,5 +1,6 @@
 # Experimenting-with-Histograms
 Try different bin sizes and limits to see if that alters inference of the same dataset
+[Link to Dash webapp hosted on Heroku](https://experimenting-with-histograms.herokuapp.com/)
 
 ## Experiment 1:
 Generate data using two different distributions, say A = N(40,10) and B = N(60,10). Then try to use certain bins to hide the differences (in the trivial case just use one bin from min(data) to max(data), both histograms will have the same shape).
