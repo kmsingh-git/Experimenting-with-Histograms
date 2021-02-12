@@ -1,5 +1,6 @@
 # Experimenting-with-Histograms
 Try different bin sizes and limits to see if that alters inference of the same dataset
+
 [Link to Dash webapp hosted on Heroku](https://experimenting-with-histograms.herokuapp.com/)
 
 ## Experiment 1:
