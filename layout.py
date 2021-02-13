@@ -1,6 +1,9 @@
+from dash_bootstrap_components._components.FormGroup import FormGroup
+from dash_bootstrap_components._components.Label import Label
 from dash_core_components.Store import Store
 import dash_html_components as html
 import dash_core_components as dcc
+import dash_bootstrap_components as dbc
 
 ####### INITIAL ##########
 import pandas as pd
@@ -17,55 +20,95 @@ layout = html.Div([
         id='data',
         data=df.to_dict('records')
     ),
-    html.H2("Experimenting with Histograms"),
-    dcc.Graph(
-        id='graph',
-        # figure will get updated in first call to callback
-    ),
     html.Div([
-        html.H5("Choose the desired Bins and click Submit"),
-        
-        "Start: ", dcc.Input(
-            id='start-bins',
-            value=min_all-1,
-            type='number'
-        ), html.Br(),
+        html.H2("Experimenting with Histograms"),
+        html.Div([
+            html.H5("Choose the desired Bins and click Submit"),
+            dbc.Form([
+                dbc.FormGroup(
+                    [
+                        dbc.Label("Start", width=2),
+                        dbc.Col(
+                            dbc.Input(
+                                type='number',
+                                id='start-bins',
+                                placeholder="Leftmost value on histogram",
+                                value=min_all-1
+                            ),
+                            width=10
+                        )
+                    ],
+                    row=True
+                ),
+                dbc.FormGroup(
+                    [
+                        dbc.Label("End", width=2),
+                        dbc.Col(
+                            dbc.Input(
+                                type='number',
+                                id='end-bins',
+                                placeholder="Rightmost value on histogram",
+                                value=max_all+1
+                            ),
+                            width=10
+                        )
+                    ],
+                    row=True
+                ),
+                dbc.FormGroup(
+                    [
+                        dbc.Label("Step Size", width=2),
+                        dbc.Col(
+                            dbc.Input(
+                                type='number',
+                                id='step-size-bins',
+                                placeholder="Size of each bin",
+                                value=10
+                            ),
+                            width=10
+                        )
+                    ],
+                    row=True
+                ),
+                dbc.Button(
+                    id='update-bins',
+                    n_clicks=0,
+                    children="Create Bins"
+                ),
+            ]),
 
-        "End: ", dcc.Input(
-            id='end-bins',
-            value=max_all+1,
-            type='number'
-        ), html.Br(),
+            html.P(),
 
-        "Step size: ", dcc.Input(
-            id='step-size-bins',
-            value=10,
-            type='number'
-        ), 
-        
-        html.Button(
-            id='update-bins',
-            n_clicks=0,
-            children="Create Bins"
-        ),
+            dbc.Form([
+                dbc.FormGroup(
+                    [
+                        dbc.Label("Bins", width=2),
+                        dbc.Col(
+                            dbc.Input(
+                                type='list',
+                                id='bins',
+                                value=''
+                            )
+                        )
+                    ],
+                    row=True
+                ),
+                dbc.FormText(
+                    "You can also manually change the bins above", color="secondary"
+                ), html.P(),
+                dbc.Button(
+                    id='submit-bins',
+                    n_clicks=0,
+                    children="Submit"
+                )
+            ]),
+        ]), html.P(),
 
-        html.P(),
-
-        "Bins: ", dcc.Input(
-            id='bins',
-            value='',
-            type='text',
-            style=dict(
-                width='550px'
-            )
-        ), html.P(),
-
-        html.Button(
-            id='submit-bins',
-            n_clicks=0,
-            children="Submit"
+        dcc.Graph(
+            id='graph',
+            # figure will get updated in first call to callback
         )
-    ])
+    ], className='container')
 ])
 
 def get_layout():
