@@ -5,6 +5,8 @@ import dash_html_components as html
 import dash_core_components as dcc
 import dash_bootstrap_components as dbc
 
+import util
+
 ####### INITIAL ##########
 import pandas as pd
 
@@ -12,7 +14,7 @@ import pandas as pd
 # But 1) this won't be edited, and 2) later we migth let the user upload their data
 df = pd.read_csv("fake_data.csv", header=0)
 min_all, max_all = df.min().min(), df.max().max()
-
+lower_limit, upper_limit, stepsize = min_all-1, max_all+1, 10
 ##########################
 
 layout = html.Div([
@@ -33,7 +35,7 @@ layout = html.Div([
                                 type='number',
                                 id='start-bins',
                                 placeholder="Leftmost value on histogram",
-                                value=min_all-1
+                                value=lower_limit
                             ),
                             width=10
                         )
@@ -48,7 +50,7 @@ layout = html.Div([
                                 type='number',
                                 id='end-bins',
                                 placeholder="Rightmost value on histogram",
-                                value=max_all+1
+                                value=upper_limit
                             ),
                             width=10
                         )
@@ -63,7 +65,7 @@ layout = html.Div([
                                 type='number',
                                 id='step-size-bins',
                                 placeholder="Size of each bin",
-                                value=10
+                                value=stepsize
                             ),
                             width=10
                         )
@@ -87,7 +89,7 @@ layout = html.Div([
                             dbc.Input(
                                 type='list',
                                 id='bins',
-                                value=''
+                                value=str(util.get_bins(lower_limit, upper_limit, stepsize))
                             )
                         )
                     ],

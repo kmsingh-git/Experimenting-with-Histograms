@@ -9,6 +9,7 @@ from graph import get_fig
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+server = app.server
 app.title = "Experiment with Histograms"
 
 app.layout = layout.get_layout()
