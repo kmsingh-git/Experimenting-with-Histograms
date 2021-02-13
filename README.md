@@ -27,7 +27,7 @@ In this case, we would have demonstrated that data from the same data generating
 - Make better ticks on x axes
 - Change hover data to show intervals instead of middle points
 - Update style
-  - Align input fields together
+  - ~~Align input fields together~~
   - Add personal signature in the app
   - Maybe add links to Socials (IG, LinkedIn, Twitter, Github)
 
