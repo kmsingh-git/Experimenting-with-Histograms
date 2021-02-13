@@ -3,6 +3,8 @@ Try different bin sizes and limits to see if that alters inference of the same d
 
 [Link to Dash webapp hosted on Heroku](https://experimenting-with-histograms.herokuapp.com/)
 
+If the Heroku app is taking forever to load, download the repository and simply run the index.py file, it will run the server on your local machine.
+
 ## Experiment 1:
 Generate data using two different distributions, say A = N(40,10) and B = N(60,10). Then try to use certain bins to hide the differences (in the trivial case just use one bin from min(data) to max(data), both histograms will have the same shape).
 
